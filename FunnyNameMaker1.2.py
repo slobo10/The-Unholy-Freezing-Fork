@@ -1,5 +1,6 @@
 import random
 from random import choice
+
 first_fun = [
     "The Holy Flamming",
     "Giant Death",
@@ -181,27 +182,33 @@ second_fun = [
     "Cutting Your Ears off",
     "Stabbing Your Eyes Out",
 ]
-print("FunnyNameMaker version 1.2. Added new format option, and possible options for names.")
-print("This a Python program written to make ridiculous names for anything you can think of. Your math book? The Galactic Math Book of Reno!")
-print("Your phone? It's the Evil Phone of Eat Your Face! Your Keyboard? The Annoying Keyboard of Wacking! The names get ridiculous!")
-print("Produces 100 names for you to pick from, so you don't have to rerun the code to find one you like.")
-print("Warning: there may or may not be small amounts of funny references in here. Use at your own risk.")
-word = input("What do you want a name for: ")
-for i in range(100):
+
+def generateName(word):
     start = choice(first_fun)
     adjee = choice(adj)
     pwr = choice(power)
     end = choice(second_fun)
     the = random.randint(1, 5)
     if the == 1:
-        print("{} {} of {}.".format(start, word, end))
+        return("{} {} of {}".format(start, word, end))
     elif the == 2:
-        print("{} {}.".format(start, word))
+        return("{} {}".format(start, word))
     elif the == 3:
-        print("The {} of {}.".format(word, end))
+        return("The {} of {}".format(word, end))
     elif the == 4:
-        print("{} {} {}.".format(pwr, adjee, word))
+        return("{} {} {}".format(pwr, adjee, word))
     elif the == 5:
-        print("{} {} {} {} of {}.".format(start, pwr, adjee, word, end))
+        return("{} {} {} {} of {}".format(start, pwr, adjee, word, end))
+    
+    return("Something went wrong.")#Shouldn't Happen
 
+print("FunnyNameMaker version 1.2. Added new format option, and possible options for names.")
+print("This a Python program written to make ridiculous names for anything you can think of. Your math book? " + generateName("Math Book") + "!")
+print("Your phone? It's the " + generateName("Phone") +"! Your Keyboard? The " + generateName("Keyboard") +"! The names get ridiculous!")
+print("Produces 100 names for you to pick from, so you don't have to rerun the code to find one you like.")
+print("Warning: there may or may not be small amounts of funny references in here. Use at your own risk.")
 
+wordInput = input("What do you want a name for: ")
+
+for i in range(100):
+    print(generateName(wordInput) + ".")
